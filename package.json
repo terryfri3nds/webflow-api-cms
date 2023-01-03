@@ -1,7 +1,7 @@
 {
-  "name": "rest-api-template",
+  "name": "webflow-api-cms",
   "version": "1.0.0",
-  "description": "Template API REST",
+  "description": "Webflow CMS API REST",
   "main": "app.js",
   "scripts": {
     "build": "node ./bin/www",
