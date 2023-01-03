@@ -1,0 +1,10 @@
+2023/01/02 19:50:23 [notice] 10733#10733: using inherited sockets from "6;7;"
+2023/01/02 20:21:16 [notice] 12071#12071: signal process started
+2023/01/02 20:21:18 [notice] 12073#12073: signal process started
+2023/01/02 20:22:27 [notice] 12103#12103: signal process started
+2023/01/02 20:22:30 [notice] 12105#12105: signal process started
+2023/01/02 20:22:33 [notice] 12107#12107: signal process started
+2023/01/02 20:22:34 [notice] 12109#12109: signal process started
+2023/01/03 10:20:45 [error] 16120#16120: *3 connect() failed (111: Unknown error) while connecting to upstream, client: 190.113.231.168, server: app.fri3nds.com, request: "GET / HTTP/2.0", upstream: "http://127.0.0.1:3000/", host: "ec2-3-92-217-229.compute-1.amazonaws.com"
+2023/01/03 10:23:29 [error] 16120#16120: *5 connect() failed (111: Unknown error) while connecting to upstream, client: 190.113.231.168, server: app.fri3nds.com, request: "GET / HTTP/2.0", upstream: "http://127.0.0.1:3000/", host: "api-webflow.fri3nds.com"
+2023/01/03 10:23:30 [error] 16120#16120: *5 connect() failed (111: Unknown error) while connecting to upstream, client: 190.113.231.168, server: app.fri3nds.com, request: "GET /favicon.ico HTTP/2.0", upstream: "http://127.0.0.1:3000/favicon.ico", host: "api-webflow.fri3nds.com", referrer: "https://api-webflow.fri3nds.com/"

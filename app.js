@@ -67,8 +67,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-//cacheMiddleware.attach(app)
+//habilito el caché
+cacheMiddleware.attach(app)
 
 app.use('/api/collection', verifyTokenNonExpire, collectionApiRouter);
 //app.use('/old-api/sessions', verifyTokenNonExpire, sessionApiRouter);
@@ -80,9 +80,7 @@ app.set('view engine', 'pug');
 
 function verifyTokenNonExpire(req, res, next) {
   const { token } = req.headers;
-console.log("token", token)
-next();
-return;
+
   if (!token)
     return responseJSON(res, 401, 'Unauthorized', '', 'Access token is missing or invalid');
 
