@@ -70,7 +70,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //habilito el caché
 cacheMiddleware.attach(app)
 
-app.use('/api/collection', verifyTokenNonExpire, collectionApiRouter);
+app.use('/api/:collection', verifyTokenNonExpire, collectionApiRouter);
+//app.use('/api/podcasts', verifyTokenNonExpire, collectionApiRouter);
+//app.use('/api/blogs', verifyTokenNonExpire, collectionApiRouter);
 //app.use('/old-api/sessions', verifyTokenNonExpire, sessionApiRouter);
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 
