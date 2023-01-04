@@ -3,7 +3,7 @@ var router = express.Router();
 var usersApiController = require("../../controllers/api/users");
 var routeHelper = require('../../helpers/routeHelper');
 /**
- * @swagger
+ * swagger
  *  components:
  *  responses:
  *   UnauthorizedError:
@@ -13,7 +13,7 @@ var routeHelper = require('../../helpers/routeHelper');
  
 //User
 /**
-* @swagger
+* swagger
 * components:
 *  schemas:
 *    User:
@@ -81,7 +81,7 @@ var routeHelper = require('../../helpers/routeHelper');
 */
 
  /**
-  * @swagger
+  * swagger
   * tags:
   *   name: Users
   *   description: The users managing API
@@ -89,7 +89,7 @@ var routeHelper = require('../../helpers/routeHelper');
 
  
  /**
- * @swagger
+ * swagger
  * /api/users/me:
  *   get:
  *     summary: Get the user by token
@@ -118,7 +118,7 @@ var routeHelper = require('../../helpers/routeHelper');
 router.get("/me", routeHelper.ensureJson, usersApiController.getByToken);
 
   /**
- * @swagger
+ * swagger
  * /api/users/{uid}:
  *   get:
  *     summary: Get the user by uid
@@ -156,7 +156,7 @@ router.get("/:uid", routeHelper.ensureJson, usersApiController.getById);
   
 
 /**
- * @swagger
+ * swagger
  * /api/users/register:
  *   post:
  *     summary: Register a new user
@@ -197,7 +197,7 @@ router.post("/register", routeHelper.ensureJson,  usersApiController.register);
 
 
 /**
- * @swagger
+ * swagger
  * /api/users/verifiedsms:
  *   post:
  *     summary: Register verified sms en true by token
@@ -227,7 +227,7 @@ router.post("/verifiedsms", routeHelper.ensureJson, usersApiController.verifiedS
 
 
 /**
- * @swagger
+ * swagger
  * /api/users/upload:
  *   post:
  *     summary: Upload picture by token
@@ -270,7 +270,7 @@ router.post("/upload", routeHelper.ensureMultipart, usersApiController.upload);
 
 
 /**
- * @swagger
+ * wagger
  * /api/users/update/{uid}:
  *  patch:
  *    summary: Update the user by the uid
@@ -313,7 +313,7 @@ router.patch("/update/:uid", routeHelper.ensureJson, usersApiController.update);
 
 
  /**
- * @swagger
+ * swagger
  * /api/users/hideUser:
  *  post:
  *    summary: Hide user
@@ -353,7 +353,7 @@ router.post("/hideUser", routeHelper.ensureJson, usersApiController.hideUser);
 
 
  /**
- * @swagger
+ * swagger
  * /api/users/showUser:
  *  post:
  *    summary: Show user
