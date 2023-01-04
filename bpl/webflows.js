@@ -120,13 +120,13 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
     let data = []
     let items = []
 
-   /* if (limit != undefined || offset != undefined)
+    if ((limit != undefined || offset != undefined) && query == undefined)
     {
-      
+       console.log("pase1")
         data = await collection.items({ limit: _limit, offset: _offset });
     }
     else
-    {*/
+    {console.log("pase2")
         while (true) {
         
             items = await collection.items({ limit: _limit, offset: _offset });
@@ -141,26 +141,29 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
             _offset += items.length;
             items = []
         }
-   // }
+    }
 
     if (query && query != undefined)
-    {
+    {console.log("pase3")
         // Filter collection
         data = data.filter(search, query);
     }
 
     if (sort && sort != undefined)
     {
+        console.log("pase4")
         // Filter collection
         data = data.sort(dynamicSortMultiple(sort));
     }
 
-    if (limit && limit != undefined)
+    if (limit && limit != undefined && query != undefined)
     {
+        console.log("pase5")
         // limit collection
         data = data.slice(offset, limit);
     }
- 
+    
+    console.log("pase6")
     var result = data;
 
     //Map instructor && author
@@ -169,7 +172,7 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
         && ("instructor" in data[0] || "choose-director-video-producer-podcast-or-author-blog-for-the-item" in data[0])
         && peoples
     )
-    {
+    {console.log("pase7")
         result = data.map((item) => {
             var newItem = item;
            
@@ -180,7 +183,7 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
         });
      
     }
-
+    console.log("pase8")
     return result;
 
 }
