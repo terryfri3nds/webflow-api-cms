@@ -10,7 +10,7 @@ function checkCache(req, res, next)
   value = myCache.get( collection );
   
   if ( value != undefined ){
-   
+    console.log("Data Found (Cached)")
     return responseJSON(res, 200 ,'success', value , value.length, 'Data Found (Cached)');
   }
   
