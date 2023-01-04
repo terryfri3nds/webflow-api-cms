@@ -8,14 +8,14 @@ var cookieParser = require('cookie-parser');
 //var csrf = require('csurf');
 var cors = require('cors')
 const session = require("express-session");
-const ExpressCache = require('express-cache-middleware')
-const cacheManager = require('cache-manager')
+//const ExpressCache = require('express-cache-middleware')
+//const cacheManager = require('cache-manager')
 
-const cacheMiddleware = new ExpressCache(
-  cacheManager.caching({
-      store: 'memory', max: 10000, ttl: 3600
-  })
-)
+//const cacheMiddleware = new ExpressCache(
+//  cacheManager.caching({
+//      store: 'memory', max: 10000, ttl: 3600
+//  })
+//)
 
 
 const jwt = require("jsonwebtoken");
@@ -33,7 +33,7 @@ const swaggerSpec = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "PhotoTap API",
+      title: "Webflow CMS API",
       version: "1.0.0"
     },
     servers: [
@@ -68,7 +68,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //habilito el caché
-cacheMiddleware.attach(app)
+//cacheMiddleware.attach(app)
 
 app.use('/api/:collection', verifyTokenNonExpire, collectionApiRouter);
 //app.use('/api/podcasts', verifyTokenNonExpire, collectionApiRouter);
@@ -128,7 +128,7 @@ app.use(function (err, req, res, next) {
     }
   }
   else {
-   
+    console.log("error",  err)
     return responseJSON(res, 400, 'Bad Request', err, 'error');
   }
 

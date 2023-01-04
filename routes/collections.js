@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var collectionApiController = require("../controllers/collections");
 var routeHelper = require('../helpers/routeHelper');
-
+var cacheHelper = require('../helpers/cacheHelper');
 /**
  * @swagger
  *  components:
@@ -89,9 +89,9 @@ var routeHelper = require('../helpers/routeHelper');
   */
 
 
-  router.post("/:collectionId/items", routeHelper.ensureJson, collectionApiController.getAllItems);
-  router.post("/:collectionId/items/limit/:limit", routeHelper.ensureJson, collectionApiController.getAllItems);
-  router.post("/:collectionId/items/limit/:limit/offset/:offset", routeHelper.ensureJson, collectionApiController.getAllItems);
-  router.post("/:collectionId/items/offset/:offset", routeHelper.ensureJson, collectionApiController.getAllItems);
+  router.post("/:collectionId/items", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
+  router.post("/:collectionId/items/limit/:limit", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
+  router.post("/:collectionId/items/limit/:limit/offset/:offset", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
+  router.post("/:collectionId/items/offset/:offset", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
 
   module.exports = router;

@@ -21,6 +21,7 @@
     "express-session": "^1.17.3",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.0",
+    "node-cache": "^5.1.2",
     "node-fetch": "^2.6.7",
     "nodemon": "^2.0.20",
     "path": "^0.12.7",
