@@ -88,7 +88,7 @@ var cacheHelper = require('../helpers/cacheHelper');
   *   description: The courses managing API
   */
 
-
+  router.get("/:collectionId/items", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
   router.post("/:collectionId/items", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
   router.post("/:collectionId/items/limit/:limit", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
   router.post("/:collectionId/items/limit/:limit/offset/:offset", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);

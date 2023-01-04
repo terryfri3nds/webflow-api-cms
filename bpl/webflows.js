@@ -158,7 +158,7 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
     if (limit && limit != undefined)
     {
         // limit collection
-        data = data.slice(0, limit);
+        data = data.slice(offset, limit);
     }
  
     var result = data;
