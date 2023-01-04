@@ -11,7 +11,7 @@ function checkCache(req, res, next)
   
   if ( value != undefined ){
   
-    return responseJSON(res, 200 ,'success', {"key": "fede"} , value.length, 'Data Found (Cached)');
+    return responseJSON(res, 200 ,'success', value , value.length, 'Data Found (Cached)');
   }
   
   next();

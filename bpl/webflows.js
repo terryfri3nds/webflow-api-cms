@@ -120,13 +120,13 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
     let data = []
     let items = []
 
-    if (limit != undefined || offset != undefined)
+   /* if (limit != undefined || offset != undefined)
     {
       
         data = await collection.items({ limit: _limit, offset: _offset });
     }
     else
-    {
+    {*/
         while (true) {
         
             items = await collection.items({ limit: _limit, offset: _offset });
@@ -141,7 +141,7 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
             _offset += items.length;
             items = []
         }
-    }
+   // }
 
     if (query && query != undefined)
     {
@@ -153,6 +153,12 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
     {
         // Filter collection
         data = data.sort(dynamicSortMultiple(sort));
+    }
+
+    if (limit && limit != undefined)
+    {
+        // limit collection
+        data = data.slice(0, limit);
     }
  
     var result = data;
