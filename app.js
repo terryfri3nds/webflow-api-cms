@@ -1,5 +1,6 @@
 //Required
 require('dotenv').config();
+const myCache = require( "./models/cache" );
 
 //var createError = require('http-errors');
 var express = require('express');
@@ -75,6 +76,14 @@ app.use('/api/:collection', verifyTokenNonExpire, collectionApiRouter);
 //app.use('/api/blogs', verifyTokenNonExpire, collectionApiRouter);
 //app.use('/old-api/sessions', verifyTokenNonExpire, sessionApiRouter);
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
+app.use('/api/purge', function(req, res){
+  
+    myCache.flushAll();
+
+    return responseJSON(res, 200, 'success', {}, 'Cache purged');
+
+
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
