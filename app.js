@@ -76,7 +76,9 @@ app.use('/api/:collection', verifyTokenNonExpire, collectionApiRouter);
 //app.use('/api/blogs', verifyTokenNonExpire, collectionApiRouter);
 //app.use('/old-api/sessions', verifyTokenNonExpire, sessionApiRouter);
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
-app.use('/api/purge', function(req, res){
+app.use('/purge', function(req, res){
+
+  console.log("purge")
   
     myCache.flushAll();
 
