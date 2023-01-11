@@ -122,15 +122,23 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
 
     if ((limit != undefined || offset != undefined) && query == undefined)
     {
+        //Retrieve direct cms by limit, but without conditions
        console.log("pase1")
         data = await collection.items({ limit: _limit, offset: _offset });
     }
     else
-    {console.log("pase2")
+    {
+        //Retrieve all items, then apply filter, limit and offset
+        console.log("pase2")
+        _offset = 0;
+        _limit = 100;
         while (true) {
         
             items = await collection.items({ limit: _limit, offset: _offset });
-           
+            console.log("*********")
+            console.log("_limit", _limit)
+            console.log("_offset", _offset)
+            console.log("data", items.length)
             if (items.length <= 0)
                 break;
 
@@ -143,6 +151,7 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
         }
     }
     console.log("data", data.length)
+    
     if (query && query != undefined)
     {
         // Filter collection
