@@ -96,7 +96,7 @@ function dynamicSortMultiple(props) {
 
 async function getAllPeoples() {
    
-    const collection = await webflow.collection({ collectionId: "637d45fe861d648fd24f7e2d" });
+    const collection = await webflow.collection({ collectionId: "63bddef3b4cbe6a02feb6f39" });
 
     data = await collection.items();
    
@@ -130,7 +130,7 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
         while (true) {
         
             items = await collection.items({ limit: _limit, offset: _offset });
-    
+           
             if (items.length <= 0)
                 break;
 
@@ -142,23 +142,24 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
             items = []
         }
     }
-
+    console.log("data", data.length)
     if (query && query != undefined)
-    {console.log("pase3")
+    {
         // Filter collection
         data = data.filter(search, query);
+        console.log("pase3", data.length)
     }
 
     if (sort && sort != undefined)
     {
-        console.log("pase4")
+        console.log("pase4", data.length)
         // Filter collection
         data = data.sort(dynamicSortMultiple(sort));
     }
 
     if (limit && limit != undefined && query != undefined)
     {
-        console.log("pase5")
+        console.log("pase5", data.length)
         // limit collection
         data = data.slice(offset, limit);
     }

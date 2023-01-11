@@ -31,7 +31,8 @@ exports.getAllItems = async function (req, res) {
     }
     catch(err)
     {
-        return responseJSON(res, 400 ,'error', {} , 0, err.message);
+        console.log(err)
+        return responseJSON(res, err.response.status ,'error', err.response.data , 0, err.message);
     }
 
 }
