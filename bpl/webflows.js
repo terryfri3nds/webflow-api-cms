@@ -179,7 +179,7 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
     //Map instructor && author
     if (
         data.length > 0 
-        && ("instructor" in data[0] || "choose-director-video-producer-podcast-or-author-blog-for-the-item" in data[0])
+        && ("instructor" in data[0] || "choose-director-video-producer-podcast-or-author-blog-for-the-item" in data[0] || "person-reference" in data[0])
         && peoples
     )
     {console.log("pase7")
@@ -188,7 +188,9 @@ getAllItems = async function (collectionId, query, limit, offset, sort) {
            
             newItem.instructor = peoples.find(e => e._id == item.instructor);
             newItem["choose-director-video-producer-podcast-or-author-blog-for-the-item"] = peoples.find(e => e._id == item["choose-director-video-producer-podcast-or-author-blog-for-the-item"]);
-
+            newItem["person-reference"] = peoples.find(e => e._id == item["person-reference"]);
+           
+            
             return newItem;
         });
      
