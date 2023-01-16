@@ -21,8 +21,8 @@ var cacheHelper = require('../helpers/cacheHelper');
 
   /**
   * @swagger
-  * /api/{nameQuery}/{collectionId}/items:
-  *   get:
+  * /api/{classNameCollection}/{collectionId}/items:
+  *   post:
   *     summary: Get items by collection
   *     tags: [Collections]
   *     parameters:
@@ -33,11 +33,11 @@ var cacheHelper = require('../helpers/cacheHelper');
   *         required: true
   *         description: The token api
   *       - in: path
-  *         name: nameQuery
+  *         name: classNameCollection
   *         schema:
   *           type: string
   *         required: true
-  *         description: The fantasy name of query
+  *         description: The class name of collection
   *       - in: path
   *         name: collectionId
   *         schema:
@@ -54,6 +54,9 @@ var cacheHelper = require('../helpers/cacheHelper');
   *                query:
   *                  type: string
   *                  description: Array of object
+  *            example:
+  *              query: { "_archived": false, _draft: false , name : ['Introduction UX'] , email: john@gmail.com, "tags": ["63bddef3b4cbe6da8deb7ac1"], }
+  *              sort: ['-published-on']
   *     responses:
   *       200:
   *         description: The user description by token
@@ -65,12 +68,20 @@ var cacheHelper = require('../helpers/cacheHelper');
   *                query:
   *                  type: string
   *                  description: Array of object
+  *            example:
+  *              data: {}
+  *              count: 0,
+  *              status: 'success'
+  *              statuscode: 200
+  *             
   *       401:
   *         $ref: '#/components/responses/UnauthorizedError'
   *       404:
   *         description: The users was not founds
   *       500:
   *         description: Some server error
+  * 
+
   */ 
   router.get("/:collectionId/items", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
   router.post("/:collectionId/items", routeHelper.ensureJson, cacheHelper.checkCache, collectionApiController.getAllItems);
