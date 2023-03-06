@@ -78,7 +78,19 @@ app.use('/api/:collection', verifyTokenNonExpire, collectionApiRouter);
 app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 app.use('/purge', function(req, res){
 
-  console.log("purge")
+  console.log("purge");
+  
+    myCache.flushAll();
+
+    return responseJSON(res, 200, 'success', {}, 'Cache purged');
+
+
+});
+app.use('/purgeTest', function(req, res){
+
+    console.log("req", req)
+    if (req.body["publish-on"] == null)
+      return responseJSON(res, 200, 'success', {}, 'Not purged');
   
     myCache.flushAll();
 
