@@ -86,7 +86,7 @@ app.use('/purge', function(req, res){
 
 
 });
-app.use('/purgeTest', function(req, res){
+app.post('/purgeTest', function(req, res){
 
     console.log("req", req)
     if (req.body["publish-on"] == null)
