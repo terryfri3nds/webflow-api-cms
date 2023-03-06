@@ -90,7 +90,7 @@ app.use('/purge', function(req, res){
 app.post('/purgeAll', function(req, res){
 
     console.log("req", req)
-    if (req.body["publish-on"] == null)
+    if (req.body["published-on"] == null)
       return responseJSON(res, 200, 'success', {}, 'Not purged');
   
     myCache.flushAll();
