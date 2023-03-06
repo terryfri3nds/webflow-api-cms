@@ -90,11 +90,15 @@ app.use('/purge', function(req, res){
 app.post('/purgeAll', function(req, res){
 
     console.log("req", req)
+
+    if ((req.body["_cid"] != "63bddef3b4cbe6fad5eb6e33" && req.body["_cid"] != "63bddef3b4cbe6e3cbeb6df2" && req.body["_cid"] != "63bddef3b4cbe65f4aeb6e6e"))
+      return responseJSON(res, 200, 'success', {}, 'Not purged');
+
     if (req.body["published-on"] == null)
       return responseJSON(res, 200, 'success', {}, 'Not purged');
   
     myCache.flushAll();
-    console.log("Cache purged")
+    console.log(">>>> Cache purged <<<<")
     return responseJSON(res, 200, 'success', {}, 'Cache purged');
 
 
